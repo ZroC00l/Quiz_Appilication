@@ -10,8 +10,8 @@
                 </ul> 
             </div>   
             <div class="nav">
-                <button @click="submit">Submit</button>
-                <button>Next</button>
+                <button @click="submit" :disabled="selectedAnswer == null || answered">Submit</button>
+                <button @click="next" :disabled="answered == false">Next</button>
             </div>
             </div>
         </div>
@@ -25,11 +25,12 @@ export default {
         ...mapActions(['next','selectedAnswer','submit'])
     },
     computed:{
-        ...mapState(['Question','current','shuffledAnswers']),
+        ...mapState(['Question','current','shuffledAnswers','correctIndex','answered','correctAnswers']),
     },
     watch:{
         current:{
             handler(){
+                this.$store.commit('RESET')
                 this.$store.commit('SHUFFLE_ANSWER')
             }
         }

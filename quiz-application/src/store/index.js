@@ -19,6 +19,14 @@ export default new  Vuex.store({
 
     mutations:{
 
+        RESETQUIZ(state){
+            state.current = 0
+            state.correctAnswers = 0
+        },
+        RESET(state){
+            state.selectedAnswer = null
+            state.answered = false
+        },
         SUBMIT(state, iscorrect){
             if(iscorrect){
                 state.correctAnswers++
@@ -71,7 +79,9 @@ export default new  Vuex.store({
                 .then(response => response.json())
                 .then(data=>{
                     commit('SET_QUESTION',data.results)
+                    commit('STOP_LOADING')
                     commit("SHUFFLE_ANSWER")
+                    commit('RESETQUIZ')
                 })
                 .catch(error => console.log(error)) 
 
