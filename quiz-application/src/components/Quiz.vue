@@ -16,6 +16,9 @@
 <script>
 import {mapState} from 'vuex'
 export default {
+    methods:{
+        ...mapActions(['next'])
+    },
     computed:{
         ...mapState(['Question','current']),
     },

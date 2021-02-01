@@ -13,6 +13,10 @@ export default new  Vuex.store({
     },
 
     mutations:{
+
+        NEXT(state){
+            state.current++
+        },
         SET_DIFFICULTY(state,difficulty){
             state.difficultyLevel = difficulty
         },
@@ -23,6 +27,11 @@ export default new  Vuex.store({
     },
     
     actions:{
+
+        next:({commit}) = >{
+            commit('NEXT')
+        },  
+
         beginQuiz:({commit},difficulty) => {
             commit('SET_DIFFICULTY',difficulty)
             fetch(`https://opentdb.com/api.php?amount=10&category=31&difficulty=${state.difficultyLevel}&type=multiple`)
@@ -32,7 +41,7 @@ export default new  Vuex.store({
                     console.log(state.Question)
                 })
                 .catch(error => console.log(error)) 
-                 
+
         }
     },       
 })
