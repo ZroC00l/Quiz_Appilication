@@ -7,6 +7,7 @@ Vue.use(vue)
 export default new  Vuex.store({
 
     state:{
+        shuffledAnswers:[],
         Question:[],
         current:0,
         difficultyLevel: null
@@ -14,6 +15,15 @@ export default new  Vuex.store({
 
     mutations:{
 
+        SHUFFLE_ANSWER(state){
+            var options;
+            Options =  _.concat(
+                state.Question[state.current].incorrect_answers,
+                state.Question[state.current].correct_answer
+            );
+            state.shuffledAnswers =  _.shuffle(Options)
+            console.log(state.shuffledAnswers)
+        },
         NEXT(state){
             state.current++
         },
@@ -32,13 +42,13 @@ export default new  Vuex.store({
             commit('NEXT')
         },  
 
-        beginQuiz:({commit},difficulty) => {
+        beginQuiz:({commit,state},difficulty) => {
             commit('SET_DIFFICULTY',difficulty)
             fetch(`https://opentdb.com/api.php?amount=10&category=31&difficulty=${state.difficultyLevel}&type=multiple`)
                 .then(response => response.json())
                 .then(data=>{
                     commit('SET_QUESTION',data.results)
-                    console.log(state.Question)
+                    commit("SHUFFLE_ANSWER")
                 })
                 .catch(error => console.log(error)) 
 
