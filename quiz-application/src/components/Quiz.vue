@@ -6,7 +6,7 @@
                 <h2>{{Question[current].question}}</h2>
             <div class="options">
                 <ul v-for="(options, index) in shuffledAnswers" :key="index">
-                    <li @click="selectedAnswer(index)">{{options}}</li>
+                    <li @click="selectedAnswer(index)" :class="checkAnswerClass(index)">{{options}}</li>
                 </ul> 
             </div>   
             <div class="nav">
@@ -22,7 +22,20 @@
 import {mapState,mapActions} from 'vuex'
 export default {
     methods:{
-        ...mapActions(['next','selectedAnswer','submit'])
+        ...mapActions(['next','selectedAnswer','submit']),
+        checkAnswerClass(index){
+            let answerClass = ''
+            if(!this.answered && this.selectedIndex === index){
+                answerClass = 'selected'
+            }
+            else if(this.answered && this.correctIndex === index){
+                answered = 'correctanswer'
+            }
+            else if(this.answered && this.selectedIndex === index && this.correctIndex !== index){
+                answerClass = 'incorrectanswer'
+            }
+            return answerClass
+        }
     },
     computed:{
         ...mapState(['Question','current','shuffledAnswers','correctIndex','answered','correctAnswers']),
@@ -53,6 +66,15 @@ ul li{
 li:hover{
     background:#FFFF;
     cursor:pointer;
+}
+.selected{
+    background: skyblue;
+}
+.correctAnswer{
+    background: springgreen;
+}
+.incorrectAnswer{
+    background: tomato;
 }
 
 </style>

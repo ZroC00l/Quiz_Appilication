@@ -69,7 +69,7 @@ export default new  Vuex.store({
             commit('SELECTED_ANSWER',index)
         },
 
-        next:({commit}) = >{
+        next:({commit}) =>{
             commit('NEXT')
         },  
 
