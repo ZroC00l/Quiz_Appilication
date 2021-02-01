@@ -55,6 +55,13 @@ export default {
 </script>
 
 <style scoped>
+
+.container{
+    display: flex;
+    flex-direction: column;
+    max-width: 700px;
+    margin:auto;
+}
 ul{
     list-style-type: none;
     padding: 0;
