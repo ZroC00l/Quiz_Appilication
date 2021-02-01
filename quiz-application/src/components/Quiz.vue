@@ -10,7 +10,7 @@
                 </ul> 
             </div>   
             <div class="nav">
-                <button>Submit</button>
+                <button @click="submit">Submit</button>
                 <button>Next</button>
             </div>
             </div>
@@ -19,13 +19,20 @@
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import {mapState,mapActions} from 'vuex'
 export default {
     methods:{
-        ...mapActions(['next'])
+        ...mapActions(['next','selectedAnswer','submit'])
     },
     computed:{
-        ...mapState(['Question','current']),
+        ...mapState(['Question','current','shuffledAnswers']),
+    },
+    watch:{
+        current:{
+            handler(){
+                this.$store.commit('SHUFFLE_ANSWER')
+            }
+        }
     },
 }
 </script>
