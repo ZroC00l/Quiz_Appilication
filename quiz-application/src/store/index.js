@@ -7,6 +7,10 @@ Vue.use(vue)
 export default new  Vuex.store({
 
     state:{
+        selectIndex: null,
+        correcIndex: null,
+        correctAnswers: 0,
+        answered: false,
         shuffledAnswers:[],
         Question:[],
         current:0,
@@ -15,6 +19,10 @@ export default new  Vuex.store({
 
     mutations:{
 
+        SELECTED_ANSWER(state,index){
+            console.log(index)
+            state.selectIndex = index
+        },
         SHUFFLE_ANSWER(state){
             var options;
             Options =  _.concat(
@@ -37,6 +45,10 @@ export default new  Vuex.store({
     },
     
     actions:{
+
+        selectedAnswer:({commit},index)=>{
+            commit('SELECTED_ANSWER',index)
+        },
 
         next:({commit}) = >{
             commit('NEXT')

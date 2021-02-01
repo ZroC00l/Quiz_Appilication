@@ -4,6 +4,11 @@
             <div v-if="Question.length">
                 <h1><span>Question:{{current + 1}}</span></h1>
                 <h2>{{Question[current].question}}</h2>
+            <div class="options">
+                <ul v-for="(options, index) in shuffledAnswers" :key="index">
+                    <li @click="selectedAnswer(index)">{{options}}</li>
+                </ul> 
+            </div>   
             <div class="nav">
                 <button>Submit</button>
                 <button>Next</button>
@@ -24,3 +29,22 @@ export default {
     },
 }
 </script>
+
+<style scoped>
+ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+ul li{
+    border: 1px solid #ddd;
+    margin-top:-1px;
+    background-color: #f6f6f6;
+    padding: 12px;
+}
+li:hover{
+    background:#FFFF;
+    cursor:pointer;
+}
+
+</style>
