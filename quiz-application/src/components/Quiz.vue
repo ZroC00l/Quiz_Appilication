@@ -41,7 +41,7 @@ export default {
         }
     },
     computed:{
-        ...mapState(['Question','current','shuffledAnswers','correctIndex','answered','correctAnswers']),
+        ...mapState(['loading','Question','current','selectedIndex','shuffledAnswers','correctIndex','answered','correctAnswers']),
     },
     watch:{
         current:{
