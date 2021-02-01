@@ -14,6 +14,9 @@
                 <button @click="next" :disabled="answered == false">Next</button>
             </div>
             </div>
+            <div>
+                <h1>Score:<span>{{correctAnswers}}/{{Question.length}}</span></h1>
+            </div>
         </div>
     </div>
 </template>
