@@ -3,7 +3,7 @@
         <header>
             <h1>Anime Quiz</h1>
             <div>
-                <button>Reset</button>
+                <button @click="$store.comnit('RESETQUIZ')">Reset</button>
             </div>
         </header>
     </div>
