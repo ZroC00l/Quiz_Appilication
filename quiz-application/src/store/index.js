@@ -4,7 +4,7 @@ import _ from 'lodash'
 
 
 Vue.use(Vuex)
-export default new  Vuex.store({
+export default new Vuex.store({
 
     state:{
         loading: false,
