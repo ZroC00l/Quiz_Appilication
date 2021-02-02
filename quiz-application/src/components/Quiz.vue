@@ -4,7 +4,7 @@
             <h1 v-if="loading">Loading...</h1>
             <div v-if="Question.length">
                 <h1><span>Question:{{current + 1}}</span></h1>
-                <h2>{{Question[current].question |replace | apostroph}}</h2>
+                <h2>{{Question[current].question | replace | apostroph}}</h2>
             <div class="options">
                 <ul v-for="(options, index) in shuffledAnswers" :key="index">
                     <li @click="selectedAnswer(index)" :class="checkAnswerClass(index)">{{options}}</li>
