@@ -11,7 +11,7 @@
                 </ul> 
             </div>   
             <div class="nav">
-                <button @click="submit" :disabled="selectedAnswer == null || answered">Submit</button>
+                <button @click="submit" :disabled="selectedIndex == null || answered">Submit</button>
                 <button @click="next" :disabled="answered == false">Next</button>
             </div>
             </div>

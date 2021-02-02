@@ -9,7 +9,7 @@
                     <option value="hard">hard</option>
                 </select>
                 <br /><br/>
-                <button @click="startQuiz()">Start Quiz</button>
+                <button @click.prevent="startQuiz()">Start Quiz</button>
             </form>
         </div>
     </div>
