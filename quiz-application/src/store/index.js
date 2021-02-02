@@ -83,6 +83,7 @@ export default new Vuex.store({
 
         beginQuiz:({commit,state},difficulty) => {
             commit('SET_DIFFICULTY',difficulty)
+            commit('START_LOADING')
             fetch(`https://opentdb.com/api.php?amount=10&category=31&difficulty=${state.difficultyLevel}&type=multiple`)
                 .then(response => response.json())
                 .then(data=>{
