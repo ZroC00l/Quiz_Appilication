@@ -3,10 +3,11 @@ import Vuex from 'vuex'
 import _ from 'lodash'
 
 
-Vue.use(vue)
+Vue.use(Vuex)
 export default new  Vuex.store({
 
     state:{
+        loading: false,
         selectIndex: null,
         correcIndex: null,
         correctAnswers: 0,
@@ -18,7 +19,12 @@ export default new  Vuex.store({
     },
 
     mutations:{
-
+        START_LOADING(state){
+            state.loading = true
+        },
+        STOP_LOADING(state){
+            state.loading = false
+        },
         RESETQUIZ(state){
             state.current = 0
             state.correctAnswers = 0
@@ -38,7 +44,7 @@ export default new  Vuex.store({
             state.selectIndex = index
         },
         SHUFFLE_ANSWER(state){
-            var options;
+            var Options
             Options =  _.concat(state.Question[state.current].incorrect_answers,state.Question[state.current].correct_answer)
             state.shuffledAnswers =  _.shuffle(Options)
             state.correcIndex = state.shuffledAnswers.indexOf(state.Question[state.current].correct_answer)
@@ -56,7 +62,9 @@ export default new  Vuex.store({
     },
     
     actions:{
-        
+        resetQuiz:({commit}) => {
+            commit('RESTQUIZ')
+        },
         submit:({commit,state}) =>{
             let iscorrect= false
             if(state.selectedAnswer === state.correcIndex){
@@ -86,5 +94,8 @@ export default new  Vuex.store({
                 .catch(error => console.log(error)) 
 
         }
-    },       
+    },  
+    modules:{
+        
+    }     
 })

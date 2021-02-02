@@ -1,9 +1,10 @@
 <template>
     <div>
         <div class="container">
+            <h1 v-if="loading">Loading...</h1>
             <div v-if="Question.length">
                 <h1><span>Question:{{current + 1}}</span></h1>
-                <h2>{{Question[current].question}}</h2>
+                <h2>{{Question[current].question |replace | apostroph}}</h2>
             <div class="options">
                 <ul v-for="(options, index) in shuffledAnswers" :key="index">
                     <li @click="selectedAnswer(index)" :class="checkAnswerClass(index)">{{options}}</li>
@@ -32,7 +33,7 @@ export default {
                 answerClass = 'selected'
             }
             else if(this.answered && this.correctIndex === index){
-                answered = 'correctanswer'
+                answerClass = 'correctanswer'
             }
             else if(this.answered && this.selectedIndex === index && this.correctIndex !== index){
                 answerClass = 'incorrectanswer'
