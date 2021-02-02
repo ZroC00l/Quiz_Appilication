@@ -44,6 +44,14 @@ export default {
     computed:{
         ...mapState(['loading','Question','current','selectedIndex','shuffledAnswers','correctIndex','answered','correctAnswers']),
     },
+    filters:{
+        replace: function(value){
+            return value.replace(/&quot;/g,'"')
+        },
+        apostroph:function(value){
+            return value.replace(/&#039;/g,"'")
+        }
+    },
     watch:{
         current:{
             handler(){
