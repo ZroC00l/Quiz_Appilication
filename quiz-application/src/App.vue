@@ -29,5 +29,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  background-image:url(https://cdn.pixabay.com/photo/2017/04/24/09/25/horse-2255876_960_720.jpg);
+}
+body{
+  background: rgb(14, 13, 13);
 }
 </style>

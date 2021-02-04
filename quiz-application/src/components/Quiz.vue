@@ -1,4 +1,4 @@
-<template>
+    <template>
     <div>
         <div class="container">
             <h1 v-if="loading">Loading...</h1>
@@ -15,7 +15,7 @@
                 <button @click="next" :disabled="answered == false">Next</button>
             </div>
             </div>
-            <div>
+            <div id="scoreBoard">
                 <h1>Score:<span>{{correctAnswers}}/{{Question.length}}</span></h1>
             </div>
         </div>
@@ -64,12 +64,32 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap');
+#scoreBoard h1{
+    margin-top: 50%;
+    font-family: 'Yusei Magic', sans-serif;
+    font-size:30px;
+}
+button {
+  background-color:burlywood;
+  font-family: 'Bungee Inline', cursive;
+  border: none;
+  color: black;
+  margin-top: -10%;
+  padding: 5px 30px ;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5%;
 
+}
 .container{
     display: flex;
     flex-direction: column;
     max-width: 700px;
     margin:auto;
+    background:transparent;
 }
 ul{
     list-style-type: none;
